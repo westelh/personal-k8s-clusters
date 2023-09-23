@@ -16,7 +16,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
 spec:
   isCA: true
-  commonName: kestrel-internal-root
+  commonName: kestrel-selfsigned-root
   secretName: kestrel-selfsigned-root
   privateKey:
     algorithm: ECDSA
@@ -36,8 +36,16 @@ spec:
   ca:
     secretName: kestrel-selfsigned-root
 ---
-apiVersion: v1
-kind: Secret
+apiVersion: trust.cert-manager.io/v1alpha1
+kind: Bundle
 metadata:
-  name: kestrel-internal-issuer-secret
-  namespace: cert-manager
+  name: kestrel-trust-bundle
+spec:
+  sources:
+  - useDefaultCAs: true
+  - secret:
+      name: "kestrel-selfsigned-root"
+      key: "ca.crt"
+  target:
+    configMap:
+      key: "root-certs.pem"
