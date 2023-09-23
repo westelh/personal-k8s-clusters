@@ -16,3 +16,7 @@ spec:
     - argocd-server.kestrel.westelh.dev
     - argocd-server
     - argocd-server.argocd.svc
+  issuerRef:
+    name: kestrel-internal-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io

@@ -15,3 +15,7 @@ spec:
   dnsNames:
     - argocd-repo-server
     - argocd-repo-server.argocd.svc
+  issuerRef:
+    name: kestrel-internal-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
