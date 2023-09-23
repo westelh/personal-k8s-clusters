@@ -31,10 +31,10 @@ kind: ClusterIssuer
 metadata:
   name: kestrel-internal-issuer
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   ca:
-    secretName: kestrel-internal-issuer-secret
+    secretName: kestrel-selfsigned-root
 ---
 apiVersion: v1
 kind: Secret
