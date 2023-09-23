@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: argocd-server.kestrel.westelh.dev
+  - host: {{ .Values.argocd.server.dnsName }}
     http:
       paths:
       - path: /

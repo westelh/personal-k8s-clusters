@@ -12,7 +12,7 @@ spec:
     size: 256
   commonName: argocd-server
   dnsNames:
-    - argocd-server.kestrel.westelh.dev
+    - {{ .Values.argocd.server.dnsName }}
     - argocd-server
     - argocd-server.argocd.svc
   issuerRef:
