@@ -35,3 +35,9 @@ metadata:
 spec:
   ca:
     secretName: kestrel-internal-issuer-secret
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kestrel-internal-issuer-secret
+  namespace: cert-manager
