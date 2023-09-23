@@ -15,4 +15,4 @@ spec:
       releaseName: metallb
   destination:
     server: {{ .Values.spec.destination.server }}
-    namespace: default
+    namespace: metallb-system
