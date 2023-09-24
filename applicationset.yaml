@@ -20,7 +20,6 @@ spec:
       source:
         chart: '{{.path.basename}}'
         repoURL: https://github.com/westelh/personal-k8s-clusters.git
-        targetRevision: HEAD
         path: '{{.path.path}}'
         helm:
           releaseName: '{{.path.basename}}'
