@@ -1,5 +1,5 @@
 apiVersion: v2
-name: kestrel
+name: configs
 description: ArgoCD configs app for kestrel cluster
 type: application
 version: 0.0.1
