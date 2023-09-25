@@ -9,3 +9,8 @@ ingress-nginx:
   controller:
     extraArgs:
       enable-ssl-passthrough: "true"
+
+nfs-subdir-external-provisioner:
+  nfs:
+    server: 172.20.200.1
+    path: /pv
