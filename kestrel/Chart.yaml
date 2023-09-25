@@ -14,3 +14,6 @@ dependencies:
   - name: nfs-subdir-external-provisioner
     version: 4.0.18
     repository: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+  - name: metallb
+    version: 0.13.11
+    repository: https://metallb.github.io/metallb
