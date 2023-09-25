@@ -1,6 +1,6 @@
-kube-prometheus-stack:
+prometheus:
   nodeExporter:
-    enabled: "false"
+    enabled: false
 
 metrics-server:
   args:

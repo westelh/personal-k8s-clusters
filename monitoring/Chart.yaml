@@ -4,7 +4,7 @@ description: Monitoring stack
 type: application
 version: 0.0.1
 dependencies:
-  - name: kube-prometheus-stack
+  - name: prometheus
     version: 51.1.1
     repository: https://prometheus-community.github.io/helm-charts
   - name: metrics-server
