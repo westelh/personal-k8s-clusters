@@ -16,6 +16,9 @@ spec:
     targetRevision: 51.1.1
     helm:
       releaseName: prometheus-stack
+      valuesObject:
+        nodeExporter:
+          enabled: {{ .Values.prometheus.nodeExporter.enabled }}
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: monitoring
