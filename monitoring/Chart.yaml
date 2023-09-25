@@ -10,3 +10,6 @@ dependencies:
 - name: metrics-server
   version: 3.11.0
   repository: https://kubernetes-sigs.github.io/metrics-server
+- name: cert-manager
+  version: 1.13.0
+  repository: https://charts.jetstack.io
