@@ -1,0 +1,7 @@
+kube-prometheus-stack:
+  nodeExporter:
+    enabled: "false"
+
+metrics-server:
+  args:
+  - --kubelet-insecure-tls
