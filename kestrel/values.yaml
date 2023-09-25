@@ -4,3 +4,8 @@ spec:
   source:
     repoURL: https://github.com/westelh/personal-k8s-clusters
     targetRevision: HEAD
+
+ingress-nginx:
+  controller:
+    extraArgs:
+      enable-ssl-passthrough: "true"
