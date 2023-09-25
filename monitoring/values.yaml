@@ -1,3 +1,14 @@
+certManager:
+  ca:
+    root:
+      secretName: monitoring-ca-root
+  issuer:
+    name: monitoring-issuer
+
+grafana:
+  ingress:
+    dnsName: grafana.kestrel.westelh.dev
+
 kube-prometheus-stack:
   nodeExporter:
     enabled: false

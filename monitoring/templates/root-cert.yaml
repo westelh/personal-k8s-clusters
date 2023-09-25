@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: monitoring-selfsigned-root
+  namespace: monitoring
+spec:
+  isCA: true
+  commonName: monitoring-selfsigned-root
+  secretName: {{ .Values.certManager.ca.root.secretName}}
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: {{ .Values.certManager.issuer.name }}
+    kind: issuer
+    group: cert-manager.io
