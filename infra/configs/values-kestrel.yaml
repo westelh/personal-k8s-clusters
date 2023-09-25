@@ -3,3 +3,7 @@ cluster:
 argocd:
   server:
     dnsName: argocd-server.kestrel.westelh.dev
+grafana:
+  ingress:
+    dnsName: grafana.kestrel.westelh.dev
+

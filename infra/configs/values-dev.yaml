@@ -2,4 +2,7 @@ cluster:
   name: dev
 argocd:
   server:
-    dnsName: localhost
+    dnsName: argocd.localhost
+grafana:
+  ingress:
+    dnsName: grafana.localhost
