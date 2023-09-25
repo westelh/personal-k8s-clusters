@@ -15,6 +15,6 @@ spec:
     - argocd-repo-server
     - argocd-repo-server.argocd.svc
   issuerRef:
-    name: kestrel-internal-issuer
+    name: {{ .Values.cluster.name }}-internal-issuer
     kind: ClusterIssuer
     group: cert-manager.io

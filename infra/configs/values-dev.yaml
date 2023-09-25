@@ -1,3 +1,5 @@
+cluster:
+  name: dev
 argocd:
   server:
     dnsName: localhost

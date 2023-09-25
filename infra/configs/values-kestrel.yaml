@@ -1,3 +1,5 @@
+cluster:
+  name: kestrel
 argocd:
   server:
     dnsName: argocd-server.kestrel.westelh.dev

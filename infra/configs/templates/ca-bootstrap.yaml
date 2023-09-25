@@ -3,7 +3,7 @@ kind: ClusterIssuer
 metadata:
   name: selfsigned-issuer
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   selfSigned: {}
 ---
@@ -13,11 +13,11 @@ metadata:
   name: selfsigned-root
   namespace: cert-manager
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   isCA: true
-  commonName: kestrel-selfsigned-root
-  secretName: kestrel-selfsigned-root
+  commonName: {{ .Values.cluster.name }}-selfsigned-root
+  secretName: {{ .Values.cluster.name }}-selfsigned-root
   privateKey:
     algorithm: ECDSA
     size: 256
@@ -29,22 +29,24 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: kestrel-internal-issuer
+  name: {{ .Values.cluster.name }}-internal-issuer
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   ca:
-    secretName: kestrel-selfsigned-root
+    secretName: {{ .Values.cluster.name }}-selfsigned-root
 ---
 apiVersion: trust.cert-manager.io/v1alpha1
 kind: Bundle
 metadata:
-  name: kestrel-trust-bundle
+  name: {{ .Values.cluster.name }}-trust-bundle
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   sources:
   - useDefaultCAs: true
   - secret:
-      name: "kestrel-selfsigned-root"
+      name: "{{ .Values.cluster.name }}-selfsigned-root"
       key: "ca.crt"
   target:
     configMap:
