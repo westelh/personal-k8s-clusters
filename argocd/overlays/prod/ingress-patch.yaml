@@ -3,13 +3,10 @@ kind: Ingress
 metadata:
   name: argocd-server-ingress
   namespace: argocd
-  annotations:
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: nginx
   rules:
-  - host: {{ .Values.argocd.server.dnsName }}
+  - host: argocd.kestrel.westelh.dev
     http:
       paths:
       - path: /

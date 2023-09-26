@@ -1,0 +1,8 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: argocd-issuer
+  namespace: argocd
+spec:
+  ca:
+    secretName: argocd-root-cert

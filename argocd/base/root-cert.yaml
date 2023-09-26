@@ -1,0 +1,24 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: root-issuer
+  namespace: argocd
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-root
+  namespace: argocd
+spec:
+  isCA: true
+  commonName: argocd-root
+  secretName: argocd-root-cert
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: root-issuer
+    kind: Issuer
+    group: cert-manager.io
