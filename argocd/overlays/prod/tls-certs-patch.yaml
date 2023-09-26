@@ -5,4 +5,4 @@ metadata:
   namespace: argocd
 spec:
   dnsNames:
-    - argocd.kestrel.westelh.dev
+    - argocd-server.kestrel.westelh.dev
