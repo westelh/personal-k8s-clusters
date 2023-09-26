@@ -9,11 +9,11 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: argocd-root
+  name: argocd-root-cert
   namespace: argocd
 spec:
   isCA: true
-  commonName: argocd-root
+  commonName: argocd-root-cert
   secretName: argocd-root-cert
   privateKey:
     algorithm: ECDSA
