@@ -5,4 +5,3 @@ bases:
 patchesStrategicMerge:
 - ingress-patch.yaml
 - tls-certs-patch.yaml
-- argocd-cm-patch.yaml
