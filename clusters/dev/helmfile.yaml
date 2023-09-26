@@ -13,3 +13,5 @@ releases:
   namespace: cert-manager
   version: ^1.13.0
   chart: cert-manager/cert-manager
+  values:
+  - installCRDs: true
