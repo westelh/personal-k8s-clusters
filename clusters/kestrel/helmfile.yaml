@@ -7,6 +7,8 @@ repositories:
   url: https://metallb.github.io/metallb
 - name: cert-manager
   url: https://charts.jetstack.io
+- name: external-secrets
+  url: https://charts.external-secrets.io
 
 releases:
 - name: ingress-nginx
@@ -34,4 +36,9 @@ releases:
   version: ^1.13.0
   chart: cert-manager/cert-manager
   values:
-    - installCRDs: true
+  - installCRDs: true
+- name: external-secrets
+  namespace: external-secrets
+  chart: external-secrets
+  values:
+  - installCRDs: true

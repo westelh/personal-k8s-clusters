@@ -3,6 +3,8 @@ repositories:
   url: https://kubernetes.github.io/ingress-nginx
 - name: cert-manager
   url: https://charts.jetstack.io
+- name: external-secrets
+  url: https://charts.external-secrets.io
 
 releases:
 - name: ingress-nginx
@@ -13,5 +15,10 @@ releases:
   namespace: cert-manager
   version: ^1.13.0
   chart: cert-manager/cert-manager
+  values:
+  - installCRDs: true
+- name: external-secrets
+  namespace: external-secrets
+  chart: external-secrets
   values:
   - installCRDs: true
