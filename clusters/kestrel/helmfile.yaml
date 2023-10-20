@@ -39,6 +39,6 @@ releases:
   - installCRDs: true
 - name: external-secrets
   namespace: external-secrets
-  chart: external-secrets
+  chart: external-secrets/external-secrets
   values:
   - installCRDs: true
