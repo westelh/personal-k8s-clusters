@@ -9,11 +9,19 @@ else
     SERVER_URL=$1
 fi
 
+echo "Enter \"prod\" or \"dev\" to select the staging environment"
+read ENVIRONMENT
+# Check if the user entered a valid environment
+if [ "$ENVIRONMENT" != "prod" ] && [ "$ENVIRONMENT" != "dev" ]; then
+    echo "Invalid environment. Exiting"
+    exit 1
+fi
+
 argocd app create argocd \
     --server $SERVER_URL \
     --project default \
     --repo https://github.com/westelh/personal-k8s-clusters.git \
-    --path apps/argocd \
+    --path apps/argocd/overlays/$ENVIRONMENT \
     --dest-namespace argocd \
     --dest-server https://kubernetes.default.svc  
 
