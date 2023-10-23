@@ -5,4 +5,4 @@ metadata:
   namespace: default
 spec:
   ca:
-    secretName: {{ .Values.certManager.ca.root.secretName }}
+    secretName: monitoring-root
