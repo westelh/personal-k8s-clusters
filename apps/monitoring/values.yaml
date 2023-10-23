@@ -1,7 +1,7 @@
 certManager:
   ca:
     root:
-      secretName: monitoring-ca-root
+      secretName: monitoring-root
   issuer:
     name: monitoring-issuer
 

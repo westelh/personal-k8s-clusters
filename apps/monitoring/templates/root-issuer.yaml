@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: monitoring-root-issuer
+  name: monitoring-root
   namespace: default
 spec:
   selfSigned: {}
