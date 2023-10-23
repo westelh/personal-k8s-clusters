@@ -5,6 +5,8 @@ repositories:
   url: https://charts.jetstack.io
 - name: external-secrets
   url: https://charts.external-secrets.io
+- name: hashicorp
+  url: https://helm.releases.hashicorp.com
 
 releases:
 - name: ingress-nginx
@@ -19,6 +21,9 @@ releases:
   - installCRDs: true
 - name: external-secrets
   namespace: external-secrets
-  chart: external-secrets
+  chart: external-secrets/external-secrets
   values:
   - installCRDs: true
+- name: vault
+  namespace: vault
+  chart: hashicorp/vault
