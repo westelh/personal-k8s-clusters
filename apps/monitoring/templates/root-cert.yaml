@@ -11,6 +11,6 @@ spec:
     algorithm: ECDSA
     size: 256
   issuerRef:
-    name: {{ .Values.certManager.issuer.name }}
+    name: monitoring-root
     kind: Issuer
     group: cert-manager.io
