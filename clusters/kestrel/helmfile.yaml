@@ -47,3 +47,5 @@ releases:
 - name: vault
   namespace: vault
   chart: hashicorp/vault
+  values:
+    - values-vault.yaml
