@@ -121,7 +121,7 @@ consul:
         vaultNamespace: ""
 
         # Enabling the Vault secrets backend will replace Kubernetes secrets with referenced Vault secrets.
-        enabled: false
+        enabled: true
 
         # The Vault role for the Consul server.
         # The role must be connected to the Consul server's service account.
@@ -135,7 +135,7 @@ consul:
         # $ helm template --show-only templates/server-serviceaccount.yaml <release-name> hashicorp/consul
         # ```
         # and check the name of `metadata.name`.
-        consulServerRole: ""
+        consulServerRole: "consul-server"
 
         # The Vault role for the Consul client.
         # The role must be connected to the Consul client's service account.
@@ -146,7 +146,7 @@ consul:
         # $ helm template --show-only templates/client-serviceaccount.yaml <release-name> hashicorp/consul
         # ```
         # and check the name of `metadata.name`.
-        consulClientRole: ""
+        consulClientRole: "consul-client"
 
         # A Vault role for the Consul `server-acl-init` job, which manages setting ACLs so that clients and components can obtain ACL tokens.
         # The role must be connected to the `server-acl-init` job's service account.
@@ -180,7 +180,7 @@ consul:
         # The role should be connected to the service accounts of all Consul components, or alternatively `*` since it
         # will be used only against the `pki/cert/ca` endpoint which is unauthenticated. A policy must be created which grants
         # read capabilities to `global.tls.caCert.secretName`, which is usually `pki/cert/ca`.
-        consulCARole: ""
+        consulCARole: "consul-ca"
 
         # This value defines additional annotations for
         # Vault agent on any pods where it'll be running.
@@ -212,18 +212,18 @@ consul:
         # documentation for information on how to configure the Vault policies.
         connectCA:
           # The address of the Vault server.
-          address: ""
+          address: "vault.vault.svc.cluster.local"
 
           # The mount path of the Kubernetes auth method in Vault.
-          authMethodPath: "kubernetes"
+          authMethodPath: "kubernetes/"
 
           # The path to a PKI secrets engine for the root certificate.
           # For more details, please refer to [Vault Connect CA configuration](https://developer.hashicorp.com/consul/docs/connect/ca/vault#rootpkipath).
-          rootPKIPath: ""
+          rootPKIPath: "pki/"
 
           # The path to a PKI secrets engine for the generated intermediate certificate.
           # For more details, please refer to [Vault Connect CA configuration](https://developer.hashicorp.com/consul/docs/connect/ca/vault#intermediatepkipath).
-          intermediatePKIPath: ""
+          intermediatePKIPath: "consul-pki/"
 
           # Additional Connect CA configuration in JSON format.
           # Please refer to [Vault Connect CA configuration](https://developer.hashicorp.com/consul/docs/connect/ca/vault#configuration)
@@ -290,10 +290,10 @@ consul:
       autoGenerate: false
       # The name of the Kubernetes secret or Vault secret path that holds the gossip
       # encryption key. A Kubernetes secret must be in the same namespace that Consul is installed into.
-      secretName: ""
+      secretName: kv/data/consul/gossip
       # The key within the Kubernetes secret or Vault secret key that holds the gossip
       # encryption key.
-      secretKey: ""
+      secretKey: key
       # Override global log verbosity level for `gossip-encryption-autogenerate-job` pods. One of "trace", "debug", "info", "warn", or "error".
       # @type: string
       logLevel: ""
@@ -313,7 +313,7 @@ consul:
       # servers and clients and all consul-k8s-control-plane components, as well as generate certificate
       # authority (optional) and server and client certificates.
       # This setting is required for [Cluster Peering](https://developer.hashicorp.com/consul/docs/connect/cluster-peering/k8s).
-      enabled: false
+      enabled: true
 
       # Override global log verbosity level. One of "trace", "debug", "info", "warn", or "error".
       # @type: string
@@ -363,7 +363,7 @@ consul:
       caCert:
         # The name of the Kubernetes or Vault secret that holds the CA certificate.
         # @type: string
-        secretName: null
+        secretName: "pki/cert/ca"
         # The key within the Kubernetes or Vault secret that holds the CA certificate.
         # @type: string
         secretKey: null
@@ -818,7 +818,7 @@ consul:
     serverCert:
       # The name of the Vault secret that holds the PEM encoded server certificate.
       # @type: string
-      secretName: null
+      secretName: pki/issue/consul-server
 
     # Exposes the servers' gossip and RPC ports as hostPorts. To enable a client
     # agent outside of the k8s cluster to join the datacenter, you would need to
