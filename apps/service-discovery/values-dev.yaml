@@ -200,7 +200,7 @@ consul:
         ca:
           # The name of the Kubernetes or Vault secret that holds the Vault CA certificate.
           # A Kubernetes secret must be in the same namespace that Consul is installed into.
-          secretName: "vault-ca"
+          secretName: "consul-vault-ca"
           # The key within the Kubernetes or Vault secret that holds the Vault CA certificate.
           secretKey: ""
 
