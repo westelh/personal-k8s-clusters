@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.8.4
 - ingress.yaml
-- tls-certs.yaml
+- certificates.yaml
