@@ -4,15 +4,15 @@ metadata:
   name: grafana
   namespace: default
   annotations:
-  {{ toYaml .Values.grafana.ingress.annotations | indent 2 }}
+  {{ toYaml .Values.monitoring.grafana.ingress.annotations | indent 2 }}
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - {{ .Values.grafana.ingress.dnsName }}
+      - {{ .Values.monitoring.grafana.ingress.dnsName }}
       secretName: grafana-tls
   rules:
-  - host: {{ .Values.grafana.ingress.dnsName }}
+  - host: {{ .Values.monitoring.grafana.ingress.dnsName }}
     http:
       paths:
       - path: /

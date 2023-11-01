@@ -1,0 +1,15 @@
+monitoring:
+  grafana:
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: vault-issuer
+        cert-manager.io/common-name: localhost
+      dnsName: localhost
+
+kube-prometheus-stack:
+  nodeExporter:
+    enabled: false
+
+metrics-server:
+  args:
+  - --kubelet-insecure-tls

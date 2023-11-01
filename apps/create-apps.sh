@@ -32,7 +32,8 @@ argocd app create monitoring \
     --repo https://github.com/westelh/personal-k8s-clusters.git \
     --path apps/monitoring \
     --dest-namespace default \
-    --dest-server https://kubernetes.default.svc  
+    --dest-server https://kubernetes.default.svc \
+    --values values-$ENVIRONMENT.yaml
 
 argocd app create service-discovery \
     --server $SERVER_URL \
