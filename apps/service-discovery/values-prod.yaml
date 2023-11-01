@@ -219,7 +219,7 @@ consul:
 
           # The path to a PKI secrets engine for the root certificate.
           # For more details, please refer to [Vault Connect CA configuration](https://developer.hashicorp.com/consul/docs/connect/ca/vault#rootpkipath).
-          rootPKIPath: "pki/"
+          rootPKIPath: "pki"
 
           # The path to a PKI secrets engine for the generated intermediate certificate.
           # For more details, please refer to [Vault Connect CA configuration](https://developer.hashicorp.com/consul/docs/connect/ca/vault#intermediatepkipath).

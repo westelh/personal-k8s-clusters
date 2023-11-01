@@ -17,7 +17,7 @@ consul:
     # It is recommended to generally not set this below "info" unless actively debugging due to logging verbosity.
     # One of "debug", "info", "warn", or "error".
     # @type: string
-    logLevel: "info"
+    logLevel: "debug"
 
     # Enable all component logs to be output in JSON format.
     # @type: boolean
@@ -212,14 +212,14 @@ consul:
         # documentation for information on how to configure the Vault policies.
         connectCA:
           # The address of the Vault server.
-          address: "vault.vault.svc.cluster.local"
+          address: "http://vault.vault.svc.cluster.local"
 
           # The mount path of the Kubernetes auth method in Vault.
           authMethodPath: "kubernetes/"
 
           # The path to a PKI secrets engine for the root certificate.
           # For more details, please refer to [Vault Connect CA configuration](https://developer.hashicorp.com/consul/docs/connect/ca/vault#rootpkipath).
-          rootPKIPath: "pki/"
+          rootPKIPath: "pki"
 
           # The path to a PKI secrets engine for the generated intermediate certificate.
           # For more details, please refer to [Vault Connect CA configuration](https://developer.hashicorp.com/consul/docs/connect/ca/vault#intermediatepkipath).
