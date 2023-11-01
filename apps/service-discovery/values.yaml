@@ -363,7 +363,7 @@ consul:
       caCert:
         # The name of the Kubernetes or Vault secret that holds the CA certificate.
         # @type: string
-        secretName: "pki/issuer/consul/json"
+        secretName: "pki/issuer/default/json"
         # The key within the Kubernetes or Vault secret that holds the CA certificate.
         # @type: string
         secretKey: null
