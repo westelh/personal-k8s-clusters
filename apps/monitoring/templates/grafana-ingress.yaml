@@ -3,8 +3,7 @@ kind: Ingress
 metadata:
   name: grafana
   namespace: default
-  annotations:
-  {{ toYaml .Values.monitoring.grafana.ingress.annotations | nindent 2 }}
+  annotations: {{ toYaml .Values.monitoring.grafana.ingress.annotations | nindent 3 }}
 spec:
   ingressClassName: nginx
   tls:
