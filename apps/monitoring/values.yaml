@@ -7,6 +7,8 @@ certManager:
 
 grafana:
   ingress:
+    annotation:
+      cert-manager.io/cluster-issuer: vault-issuer
     dnsName: grafana.kestrel.westelh.dev
 
 kube-prometheus-stack:
