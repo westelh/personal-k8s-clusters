@@ -4,7 +4,7 @@ metadata:
   name: grafana
   namespace: default
   annotations:
-  {{ toYaml .Values.monitoring.grafana.ingress.annotations | indent 2 }}
+  {{ toYaml .Values.monitoring.grafana.ingress.annotations | nindent 2 }}
 spec:
   ingressClassName: nginx
   tls:
