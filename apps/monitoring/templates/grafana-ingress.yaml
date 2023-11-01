@@ -3,7 +3,8 @@ kind: Ingress
 metadata:
   name: grafana
   namespace: default
-  {{ .Values.grafana.ingress.annotations }}
+  annotations:
+    cert-manager.io/cluster-issuer: vault-issuer
 spec:
   ingressClassName: nginx
   tls:
