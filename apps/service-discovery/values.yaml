@@ -200,7 +200,7 @@ consul:
         ca:
           # The name of the Kubernetes or Vault secret that holds the Vault CA certificate.
           # A Kubernetes secret must be in the same namespace that Consul is installed into.
-          secretName: ""
+          secretName: "vault-ca"
           # The key within the Kubernetes or Vault secret that holds the Vault CA certificate.
           secretKey: ""
 
@@ -363,7 +363,7 @@ consul:
       caCert:
         # The name of the Kubernetes or Vault secret that holds the CA certificate.
         # @type: string
-        secretName: "pki/cert/ca"
+        secretName: "pki/issuer/consul/json"
         # The key within the Kubernetes or Vault secret that holds the CA certificate.
         # @type: string
         secretKey: null
@@ -826,7 +826,7 @@ consul:
     # set `server.ports.serflan.port` to a port not being used on the host. Since
     # `client.exposeGossipPorts` uses the hostPort 8301,
     # `server.ports.serflan.port` must be set to something other than 8301.
-    exposeGossipAndRPCPorts: false
+    exposeGossipAndRPCPorts: true
 
     # Configures ports for the consul servers.
     ports:
@@ -840,7 +840,7 @@ consul:
       # default the LAN gossip port is 8301 and configured as a containerPort on
       # the consul server Pods.
       serflan:
-        port: 8301
+        port: 9301
 
     # This defines the disk size for configuring the
     # servers' StatefulSet storage. For dynamically provisioned storage classes, this is the
@@ -1444,7 +1444,7 @@ consul:
     # This is only necessary if pod IPs in the k8s cluster are not directly routable
     # and the Consul servers are outside of the k8s cluster.
     # This also changes the clients' advertised IP to the `hostIP` rather than `podIP`.
-    exposeGossipPorts: false
+    exposeGossipPorts: true
 
     serviceAccount:
       # This value defines additional annotations for the client service account. This should be formatted as a multi-line
