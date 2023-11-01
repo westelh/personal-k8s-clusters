@@ -19,8 +19,64 @@ vault write auth/kubernetes/config \
     kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
 ```
 
+# Cert-Manager
+
+https://cert-manager.io/docs/configuration/vault/
+
+```
+kubectl create serviceaccount -n vault vault-issuer
+```
+
+Then add an RBAC Role so that cert-manager can get tokens for the ServiceAccount:
+
+```
+kubectl apply -n vault -f clusters/dev/manifests/rbac-vault-issuer.yaml
+```
+
+Enable PKI,
+
+https://developer.hashicorp.com/vault/docs/secrets/pki/setup
+
+Configure PKI Role, 
+
+https://developer.hashicorp.com/vault/api-docs/secret/pki#create-update-role
+
+```
+vault write /pki/roles/vault-issuer \
+	issuer_ref=default \
+	max_ttl=720h
+```
+
+Configure Role,
+
+```
+vault write auth/kubernetes/role/vault-issuer \
+    bound_service_account_names=vault-issuer \
+    bound_service_account_namespaces=cert-manager \
+    audience="vault://vault-issuer" \
+    policies=vault-issuer \
+    ttl=1m
+```
+
+Apply policy,
+
+```
+vault policy write vault-issuer vault/policies/vault-issuer.hcl 
+```
+
+Finally, create the Issuer resource:
+
+```
+kubectl apply -f clusters/dev/manifests/vault-issuer.yaml
+```
+
+
+
 # Roles and Policies
-## Consul-Server
+
+## Consul
+
+### Consul-Server
 | # The Vault role for the Consul server.
 | # The role must be connected to the Consul server's service account.
 | # The role must also have a policy with read capabilities for the following secrets:
@@ -41,7 +97,7 @@ vault write auth/kubernetes/role/consul-server \
     ttl=1h
 ```
 
-## Consul-Client
+### Consul-Client
 | # The Vault role for the Consul client.
 | # The role must be connected to the Consul client's service account.
 | # The role must also have a policy with read capabilities for the gossip encryption
@@ -59,7 +115,7 @@ vault write auth/kubernetes/role/consul-client \
     ttl=1h
 ```
 
-## Consul-CA
+### Consul-CA
 | # The Vault role for all Consul components to read the Consul's server's CA Certificate (unauthenticated).
 | # The role should be connected to the service accounts of all Consul components, or alternatively `*` since it
 | # will be used only against the `pki/cert/ca` endpoint which is unauthenticated. A policy must be created which grants
