@@ -149,6 +149,18 @@ vault write auth/kubernetes/role/consul-ca \
     ttl=1h
 ```
 
+#### Dev
+```
+vault write pki/roles/consul-server \
+    issuer_ref="devroot" \
+    allowed_domains="dev.consul, consul-server, consul-server.default, consul-server.default.svc" \
+    allow_subdomains=true \
+    allow_bare_domains=true \
+    allow_localhost=true \
+    max_ttl="720h"
+```
+
+#### Prod
 ```
 vault write pki/roles/consul-server \
     allowed_domains="kestrel.consul, consul-server, consul-server.default, consul-server.default.svc" \
@@ -156,4 +168,10 @@ vault write pki/roles/consul-server \
     allow_bare_domains=true \
     allow_localhost=true \
     max_ttl="720h"
+```
+
+#### Certificate Secret
+```
+pbpaste > consul-ca.crt
+kubectl create secret generic consul-vault-ca --from-file vault.ca=consul-ca.crt
 ```
