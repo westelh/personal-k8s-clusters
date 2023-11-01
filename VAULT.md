@@ -24,7 +24,7 @@ vault write auth/kubernetes/config \
 https://cert-manager.io/docs/configuration/vault/
 
 ```
-kubectl create serviceaccount -n vault vault-issuer
+kubectl create serviceaccount -n cert-manager vault-issuer
 ```
 
 Then add an RBAC Role so that cert-manager can get tokens for the ServiceAccount:
@@ -43,8 +43,10 @@ https://developer.hashicorp.com/vault/api-docs/secret/pki#create-update-role
 
 ```
 vault write /pki/roles/vault-issuer \
-	issuer_ref=default \
-	max_ttl=720h
+      issuer_ref=default \
+      max_ttl=720h \
+      allow_any_name=true \
+      key_type=any
 ```
 
 Configure Role,
@@ -67,7 +69,7 @@ vault policy write vault-issuer vault/policies/vault-issuer.hcl
 Finally, create the Issuer resource:
 
 ```
-kubectl apply -f clusters/dev/manifests/vault-issuer.yaml
+kubectl apply -f clusters/dev/manifests/
 ```
 
 
@@ -75,6 +77,20 @@ kubectl apply -f clusters/dev/manifests/vault-issuer.yaml
 # Roles and Policies
 
 ## Consul
+
+### Gossip-Key
+
+Enable KV
+
+```
+vault secrets enable -version=2 kv
+```
+
+Store Key
+
+```
+vault kv put kv/consul/gossip key="$(consul keygen)"
+```
 
 ### Consul-Server
 | # The Vault role for the Consul server.
