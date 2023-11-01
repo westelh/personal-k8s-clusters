@@ -1018,7 +1018,10 @@ consul:
     #   with `-config-dir`. This defaults to false.
     #
     # @type: array<map>
-    extraVolumes: []
+    extraVolumes:
+    - type: "secret"
+      name: "consul-vault-ca"
+      load: "false"
 
     # A list of sidecar containers.
     # Example:
