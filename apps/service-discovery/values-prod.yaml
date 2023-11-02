@@ -212,7 +212,7 @@ consul:
         # documentation for information on how to configure the Vault policies.
         connectCA:
           # The address of the Vault server.
-          address: "http://vault.vault.svc.cluster.local"
+          address: "http://vault.vault.svc.cluster.local:8200"
 
           # The mount path of the Kubernetes auth method in Vault.
           authMethodPath: "kubernetes/"
