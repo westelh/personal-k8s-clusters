@@ -13,3 +13,23 @@ path "kv/data/consul/ca" {
 path "pki/issue/consul-server" {
   capabilities = ["create", "update"]
 }
+
+path "pki/root/sign-intermediate" {
+  capabilities = ["create", "update"]
+}
+
+path "consul-pki/*" {
+    capabilities = ["create", "update"]
+}
+
+path "consul-pki/roles/*" {
+    capabilities = ["create", "update"]
+}
+
+path "consul-pki/config/issuers" {
+    capabilities = ["read", "update"]
+}
+
+path "consul-pki/issuer/*" {
+    capabilities = ["read"]
+}
