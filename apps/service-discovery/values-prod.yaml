@@ -174,7 +174,7 @@ consul:
         # and issue a certificate and private key.
         # A Vault policy must be created which grants issue capabilities to
         # `global.secretsBackend.vault.connectInject.tlsCert.secretName`.
-        connectInjectRole: ""
+        connectInjectRole: "consul-ca"
 
         # The Vault role for all Consul components to read the Consul's server's CA Certificate (unauthenticated).
         # The role should be connected to the service accounts of all Consul components, or alternatively `*` since it
@@ -252,7 +252,7 @@ consul:
             # The Vault secret path that contains the CA certificate for
             # Connect Inject webhooks.
             # @type: string
-            secretName: null
+            secretName: pki/cert/ca
 
           # Configuration to the Vault Secret that Kubernetes uses on
           # Kubernetes pod creation, deletion, and update, to get TLS certificates
