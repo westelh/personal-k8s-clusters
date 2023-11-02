@@ -1861,7 +1861,7 @@ consul:
   syncCatalog:
     # True if you want to enable the catalog sync. Set to "-" to inherit from
     # global.enabled.
-    enabled: false
+    enabled: true
 
     # The name of the Docker image (including any tag) for consul-k8s-control-plane
     # to run the sync program.

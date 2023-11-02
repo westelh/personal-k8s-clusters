@@ -143,7 +143,7 @@ vault policy write consul-ca vault/policies/consul-ca.hcl
 
 ```
 vault write auth/kubernetes/role/consul-ca \
-    bound_service_account_names=consul-connect-injector,consul-gateway-resources,consul-gateway-cleanup,consul-webhook-cert-manager,consul-server,consul-client,consul-gossip-encryption-autogenerate \
+    bound_service_account_names="*" \
     bound_service_account_namespaces=default \
     policies=consul-ca \
     ttl=1h
@@ -192,7 +192,7 @@ vault write auth/kubernetes/role/consul-connect-injector \
 
 ```
 vault write pki/roles/consul-connect-injector \
-    allowed_domains="consul-connect-injector,consul-connect-injector.default,consul-connect-injector.default.svc" \
+    allowed_domains="consul-connect-injector,consul-connect-injector.default,consul-connect-injector.default.svc,consul-connect-injector.default.svc.cluster.local" \
     allow_subdomains=true \
     allow_bare_domains=true \
     allow_localhost=true \
