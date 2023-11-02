@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: consul-ui
+  namespace: default
+  annotations: {{ toYaml .Values.serviceDiscovery.consul.ui.ingress.annotations | nindent 3 }}
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - {{ .Values.serviceDiscovery.consul.ui.ingress.dnsName }}
+      secretName: consul-ui-ingress-tls
+  rules:
+  - host: {{ .Values.serviceDiscovery.consul.ui.ingress.dnsName }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: consul-ui
+            port:
+              number: 443
