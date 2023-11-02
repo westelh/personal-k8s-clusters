@@ -175,3 +175,27 @@ vault write pki/roles/consul-server \
 pbpaste > consul-ca.crt
 kubectl create secret generic consul-vault-ca --from-file vault.ca=consul-ca.crt
 ```
+
+### Consul-Connect-Injector
+
+```
+vault policy write consul-connect-injector vault/policies/consul-connect-injector.hcl
+```
+
+```
+vault write auth/kubernetes/role/consul-connect-injector \
+    bound_service_account_names=consul-connect-injector \
+    bound_service_account_namespaces=default \
+    policies=consul-connect-injector \
+    ttl=1h
+```
+
+```
+vault write pki/roles/consul-connect-injector \
+    allowed_domains="consul-connect-injector,consul-connect-injector.default,consul-connect-injector.default.svc" \
+    allow_subdomains=true \
+    allow_bare_domains=true \
+    allow_localhost=true \
+    max_ttl="720h"
+```
+

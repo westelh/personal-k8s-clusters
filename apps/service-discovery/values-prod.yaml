@@ -174,7 +174,7 @@ consul:
         # and issue a certificate and private key.
         # A Vault policy must be created which grants issue capabilities to
         # `global.secretsBackend.vault.connectInject.tlsCert.secretName`.
-        connectInjectRole: "consul-ca"
+        connectInjectRole: "consul-connect-injector"
 
         # The Vault role for all Consul components to read the Consul's server's CA Certificate (unauthenticated).
         # The role should be connected to the service accounts of all Consul components, or alternatively `*` since it
@@ -261,7 +261,7 @@ consul:
             # The Vault secret path that issues TLS certificates for connect
             # inject webhooks.
             # @type: string
-            secretName: null
+            secretName: pki/issue/consul-connect-injector
 
     # Configures Consul's gossip encryption key.
     # (Refer to [`-encrypt`](https://developer.hashicorp.com/consul/docs/agent/config/cli-flags#_encrypt)).
