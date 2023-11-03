@@ -21,6 +21,11 @@ kube-prometheus-stack:
         k8s-app: coredns
   kubeEtcd:
     enabled: false
+  kubeScheduler:
+    service:
+      selector:
+        k8s-app: kube-scheduler
+
 metrics-server:
   args:
   - --kubelet-insecure-tls
