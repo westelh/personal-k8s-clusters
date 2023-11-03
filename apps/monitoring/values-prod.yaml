@@ -15,6 +15,10 @@ monitoring:
 kube-prometheus-stack:
   nodeExporter:
     enabled: false
+  coreDns:
+    service:
+      selector:
+        k8s-app: coredns
 
 metrics-server:
   args:
