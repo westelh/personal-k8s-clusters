@@ -5,6 +5,12 @@ monitoring:
         cert-manager.io/cluster-issuer: vault-issuer
         cert-manager.io/common-name: grafana.kestrel.westelh.dev
       dnsName: grafana.kestrel.westelh.dev
+  prometheus:
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: vault-issuer
+        cert-manager.io/common-name: grafana.kestrel.westelh.dev
+      dnsName: prometheus.kestrel.westelh.dev
 
 kube-prometheus-stack:
   nodeExporter:

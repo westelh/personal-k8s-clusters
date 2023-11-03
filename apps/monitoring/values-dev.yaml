@@ -5,6 +5,12 @@ monitoring:
         cert-manager.io/cluster-issuer: vault-issuer
         cert-manager.io/common-name: localhost
       dnsName: localhost
+  prometheus:
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: vault-issuer
+        cert-manager.io/common-name: localhost
+      dnsName: localhost
 
 kube-prometheus-stack:
   nodeExporter:
