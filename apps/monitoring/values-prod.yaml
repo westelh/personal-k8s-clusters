@@ -25,6 +25,10 @@ kube-prometheus-stack:
     service:
       selector:
         k8s-app: kube-scheduler
+  kubeControllerManager:
+    service:
+      selector:
+        k8s-app: kube-controller-manager
 
 metrics-server:
   args:
