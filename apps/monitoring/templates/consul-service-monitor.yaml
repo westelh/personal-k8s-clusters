@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: consul-server
+  namespace: default
+spec:
+  endpoints:
+  - honorLabels: true
+    path: /v1/agent/metrics
+    port: https
+    scheme: https
+    scrapeTimeout: 30s
+  jobLabel: monitoring
+  namespaceSelector:
+    matchNames:
+    - default
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: service-discovery 
+      app: consul
+      component: server
