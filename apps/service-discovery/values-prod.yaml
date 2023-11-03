@@ -614,12 +614,12 @@ consul:
       # to expose Prometheus metrics for the Consul service mesh. By default
       # this includes gateway metrics and sidecar metrics.
       # @type: boolean
-      enabled: false
+      enabled: true
 
       # Configures consul agent metrics. Only applicable if
       # `global.metrics.enabled` is true.
       # @type: boolean
-      enableAgentMetrics: false
+      enableAgentMetrics: true
 
       # Configures the retention time for metrics in Consul clients and
       # servers. This must be greater than 0 for Consul clients and servers
