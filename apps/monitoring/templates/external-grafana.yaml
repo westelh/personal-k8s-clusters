@@ -1,0 +1,16 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  name: external-grafana
+  labels:
+    release: {{ .Release.Name }}
+    dashboards: grafana
+spec:
+  external:
+    url: http://monitoring-grafana:80
+    adminPassword:
+      name: monitoring-grafana
+      key: admin-password
+    adminUser:
+      name: monitoring-grafana
+      key: admin-user
