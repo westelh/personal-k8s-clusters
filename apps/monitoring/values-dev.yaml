@@ -16,7 +16,7 @@ kube-prometheus-stack:
   grafana:
     serviceMonitor:
       labels:
-        release: {{ .Release.Name }}
+        release: monitoring
   nodeExporter:
     enabled: false
 
