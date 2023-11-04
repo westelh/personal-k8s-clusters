@@ -6,4 +6,7 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: "grafana"
-  url: "https://raw.githubusercontent.com/hashicorp/consul/main/grafana/consul-k8s-control-plane-monitoring.json"
+  url: "https://grafana.com/api/dashboards/13396/revisions/3/download"
+  datasources:
+    - datasourceName: Prometheus
+      inputName: DS_PROMETHEUS
