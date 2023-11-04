@@ -8,7 +8,7 @@ dependencies:
   version: 51.1.1
   repository: https://prometheus-community.github.io/helm-charts
 - name: grafana-operator
-  repository: oci://ghcr.io/grafana-operator/helm-charts/grafana-operator
+  repository: oci://ghcr.io/grafana-operator/helm-charts
   version: v5.4.2
 - name: metrics-server
   version: 3.11.0
