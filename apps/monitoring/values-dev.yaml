@@ -13,6 +13,10 @@ monitoring:
       dnsName: localhost
 
 kube-prometheus-stack:
+  grafana:
+    serviceMonitor:
+      labels:
+        release: {{ .Release.Name }}
   nodeExporter:
     enabled: false
 

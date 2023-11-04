@@ -13,6 +13,10 @@ monitoring:
       dnsName: prometheus.kestrel.westelh.dev
 
 kube-prometheus-stack:
+  grafana:
+    serviceMonitor:
+      labels:
+        release: {{ .Release.Name }}
   nodeExporter:
     enabled: false
   coreDns:
