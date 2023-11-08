@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Release.Name }}-vault-service
+  namespace: default
+  labels:
+    release: {{ .Release.Name }}
+spec:
+  endpoints:
+  - path: /v1/sys/metrics
+    port: http
+    scheme: http
+    scrapeTimeout: 30s
+  jobLabel: monitoring
+  namespaceSelector:
+    matchNames:
+    - vault
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: vault
