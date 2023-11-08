@@ -276,7 +276,7 @@ injector:
   # extraEnvironmentVars is a list of extra environment variables to set in the
   # injector deployment.
   extraEnvironmentVars: {}
-    # KUBERNETES_SERVICE_HOST: kubernetes.default.svc
+  # KUBERNETES_SERVICE_HOST: kubernetes.default.svc
 
   # Affinity Settings for injector pods
   # This can either be a multi-line string or YAML matching the PodSpec's affinity field.
@@ -406,14 +406,14 @@ server:
   ingress:
     enabled: false
     labels: {}
-      # traffic: external
+    # traffic: external
     annotations: {}
-      # |
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
-      #   or
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+    # |
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+    #   or
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
 
     # Optionally use ingressClassName instead of deprecated annotation.
     # See: https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
@@ -427,8 +427,8 @@ server:
     # configure the ingress to point to the Vault active service.
     activeService: true
     hosts:
-      - host: chart-example.local
-        paths: []
+    - host: chart-example.local
+      paths: []
     ## Extra paths to prepend to the host configuration. This is useful when working with annotation based services.
     extraPaths: []
     # - path: /*
@@ -470,20 +470,20 @@ server:
   # This is useful if you need to run a script to provision TLS certificates or
   # write out configuration files in a dynamic way.
   extraInitContainers: null
-    # # This example installs a plugin pulled from github into the /usr/local/libexec/vault/oauthapp folder,
-    # # which is defined in the volumes value.
-    # - name: oauthapp
-    #   image: "alpine"
-    #   command: [sh, -c]
-    #   args:
-    #     - cd /tmp &&
-    #       wget https://github.com/puppetlabs/vault-plugin-secrets-oauthapp/releases/download/v1.2.0/vault-plugin-secrets-oauthapp-v1.2.0-linux-amd64.tar.xz -O oauthapp.xz &&
-    #       tar -xf oauthapp.xz &&
-    #       mv vault-plugin-secrets-oauthapp-v1.2.0-linux-amd64 /usr/local/libexec/vault/oauthapp &&
-    #       chmod +x /usr/local/libexec/vault/oauthapp
-    #   volumeMounts:
-    #     - name: plugins
-    #       mountPath: /usr/local/libexec/vault
+  # # This example installs a plugin pulled from github into the /usr/local/libexec/vault/oauthapp folder,
+  # # which is defined in the volumes value.
+  # - name: oauthapp
+  #   image: "alpine"
+  #   command: [sh, -c]
+  #   args:
+  #     - cd /tmp &&
+  #       wget https://github.com/puppetlabs/vault-plugin-secrets-oauthapp/releases/download/v1.2.0/vault-plugin-secrets-oauthapp-v1.2.0-linux-amd64.tar.xz -O oauthapp.xz &&
+  #       tar -xf oauthapp.xz &&
+  #       mv vault-plugin-secrets-oauthapp-v1.2.0-linux-amd64 /usr/local/libexec/vault/oauthapp &&
+  #       chmod +x /usr/local/libexec/vault/oauthapp
+  #   volumeMounts:
+  #     - name: plugins
+  #       mountPath: /usr/local/libexec/vault
 
   # extraContainers is a list of sidecar containers. Specified as a YAML list.
   extraContainers: null
@@ -498,8 +498,8 @@ server:
   # extraPorts is a list of extra ports. Specified as a YAML list.
   # This is useful if you need to add additional ports to the statefulset in dynamic way.
   extraPorts: null
-    # - containerPort: 8300
-    #   name: http-monitoring
+  # - containerPort: 8300
+  #   name: http-monitoring
 
   # Used to define custom readinessProbe settings
   readinessProbe:
@@ -554,25 +554,25 @@ server:
   # extraEnvironmentVars is a list of extra environment variables to set with the stateful set. These could be
   # used to include variables required for auto-unseal.
   extraEnvironmentVars: {}
-    # GOOGLE_REGION: global
-    # GOOGLE_PROJECT: myproject
-    # GOOGLE_APPLICATION_CREDENTIALS: /vault/userconfig/myproject/myproject-creds.json
+  # GOOGLE_REGION: global
+  # GOOGLE_PROJECT: myproject
+  # GOOGLE_APPLICATION_CREDENTIALS: /vault/userconfig/myproject/myproject-creds.json
 
   # extraSecretEnvironmentVars is a list of extra environment variables to set with the stateful set.
   # These variables take value from existing Secret objects.
   extraSecretEnvironmentVars: []
-    # - envName: AWS_SECRET_ACCESS_KEY
-    #   secretName: vault
-    #   secretKey: AWS_SECRET_ACCESS_KEY
+  # - envName: AWS_SECRET_ACCESS_KEY
+  #   secretName: vault
+  #   secretKey: AWS_SECRET_ACCESS_KEY
 
   # Deprecated: please use 'volumes' instead.
   # extraVolumes is a list of extra volumes to mount. These will be exposed
   # to Vault in the path `/vault/userconfig/<name>/`. The value below is
   # an array of objects, examples are shown below.
   extraVolumes: []
-    # - type: secret (or "configMap")
-    #   name: my-secret
-    #   path: null # default is `/vault/userconfig`
+  # - type: secret (or "configMap")
+  #   name: my-secret
+  #   path: null # default is `/vault/userconfig`
 
   # volumes is a list of volumes made available to all containers. These are rendered
   # via toYaml rather than pre-processed like the extraVolumes value.
@@ -730,7 +730,7 @@ server:
   # /vault/audit
   # See https://www.vaultproject.io/docs/audit/index.html to know more
   auditStorage:
-    enabled: false
+    enabled: true
     # Size of the PVC created
     size: 10Gi
     # Location where the PVC will be mounted.
@@ -901,8 +901,8 @@ server:
     disruptionBudget:
       enabled: true
 
-    # maxUnavailable will default to (n/2)-1 where n is the number of
-    # replicas. If you'd like a custom value, you can specify an override here.
+      # maxUnavailable will default to (n/2)-1 where n is the number of
+      # replicas. If you'd like a custom value, you can specify an override here.
       maxUnavailable: null
 
   # Definition of the serviceAccount used to run Vault.
@@ -1199,33 +1199,33 @@ serverTelemetry:
     scrapeTimeout: 10s
 
   prometheusRules:
-      # The Prometheus operator *must* be installed before enabling this feature,
-      # if not the chart will fail to install due to missing CustomResourceDefinitions
-      # provided by the operator.
+    # The Prometheus operator *must* be installed before enabling this feature,
+    # if not the chart will fail to install due to missing CustomResourceDefinitions
+    # provided by the operator.
 
-      # Deploy the PrometheusRule custom resource for AlertManager based alerts.
-      # Requires that AlertManager is properly deployed.
-      enabled: false
+    # Deploy the PrometheusRule custom resource for AlertManager based alerts.
+    # Requires that AlertManager is properly deployed.
+    enabled: false
 
-      # Selector labels to add to the PrometheusRules.
-      # When empty, defaults to:
-      #  release: prometheus
-      selectors: {}
+    # Selector labels to add to the PrometheusRules.
+    # When empty, defaults to:
+    #  release: prometheus
+    selectors: {}
 
-      # Some example rules.
-      rules: []
-      #  - alert: vault-HighResponseTime
-      #    annotations:
-      #      message: The response time of Vault is over 500ms on average over the last 5 minutes.
-      #    expr: vault_core_handle_request{quantile="0.5", namespace="mynamespace"} > 500
-      #    for: 5m
-      #    labels:
-      #      severity: warning
-      #  - alert: vault-HighResponseTime
-      #    annotations:
-      #      message: The response time of Vault is over 1s on average over the last 5 minutes.
-      #    expr: vault_core_handle_request{quantile="0.5", namespace="mynamespace"} > 1000
-      #    for: 5m
-      #    labels:
-      #      severity: critical
+    # Some example rules.
+    rules: []
+    #  - alert: vault-HighResponseTime
+    #    annotations:
+    #      message: The response time of Vault is over 500ms on average over the last 5 minutes.
+    #    expr: vault_core_handle_request{quantile="0.5", namespace="mynamespace"} > 500
+    #    for: 5m
+    #    labels:
+    #      severity: warning
+    #  - alert: vault-HighResponseTime
+    #    annotations:
+    #      message: The response time of Vault is over 1s on average over the last 5 minutes.
+    #    expr: vault_core_handle_request{quantile="0.5", namespace="mynamespace"} > 1000
+    #    for: 5m
+    #    labels:
+    #      severity: critical
 
