@@ -2502,7 +2502,7 @@ consul:
       matchExpressions:
         - key: "kubernetes.io/metadata.name"
           operator: "NotIn"
-          values: ["kube-system","local-path-storage","openebs"]
+          values: ["kube-system","local-path-storage","openebs", "vault"]
 
     # List of k8s namespaces to allow Connect sidecar
     # injection in. If a k8s namespace is not included or is listed in `k8sDenyNamespaces`,
