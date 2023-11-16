@@ -10,7 +10,7 @@ vault auth enable kubernetes
 
 ### Configure Auth method
 
-kubectl exec -it vault-0 /bin/sh
+kubectl exec -it vault-0 -- /bin/sh
 
 ```
 vault write auth/kubernetes/config \
