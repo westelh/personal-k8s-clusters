@@ -4,3 +4,5 @@ baremetal:
 nfsSubdirExternalProvisioner: {}
 
 loadbalancer: {}
+
+ingressNginx: {}

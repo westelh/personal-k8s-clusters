@@ -34,3 +34,4 @@ releases:
   - controller:
       extraArgs:
         enable-ssl-passthrough: "true"
+  - {{ .Values.ingressNginx | toYaml | nindent 4 }}
