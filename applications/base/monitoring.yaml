@@ -10,9 +10,9 @@ spec:
   sources:
   - repoURL: https://github.com/westelh/personal-k8s-clusters.git
     path: apps/monitoring
-    targetRevision: master
+    targetRevision: main
     helm:
       releaseName: monitoring
   - repoURL: https://github.com/westelh/personal-k8s-clusters.git
-    targetRevision: master
+    targetRevision: main
     ref: values

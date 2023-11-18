@@ -10,9 +10,9 @@ spec:
   sources:
   - repoURL: https://github.com/westelh/personal-k8s-clusters.git
     path: apps/service-discovery
-    targetRevision: master
+    targetRevision: main
     helm:
       releaseName: service-discovery
   - repoURL: https://github.com/westelh/personal-k8s-clusters.git
-    targetRevision: master
+    targetRevision: main
     ref: values

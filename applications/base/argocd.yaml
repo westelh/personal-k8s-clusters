@@ -11,4 +11,4 @@ spec:
     repoURL: https://github.com/westelh/personal-k8s-clusters.git
     # Path needs to be overridden in overlays
     path: change-me
-    targetRevision: master
+    targetRevision: main
