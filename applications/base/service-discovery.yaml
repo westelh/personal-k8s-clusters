@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: service-discovery
-  namespace: default
 spec:
   project: default
   destination:
