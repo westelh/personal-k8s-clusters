@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring
+  namespace: default
+spec:
+  project: default
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
+  sources:
+  - repoURL: https://github.com/westelh/personal-k8s-clusters.git
+    path: apps/monitoring
+    targetRevision: master
+    helm:
+      releaseName: monitoring
+  - repoURL: https://github.com/westelh/personal-k8s-clusters.git
+    targetRevision: master
+    ref: values

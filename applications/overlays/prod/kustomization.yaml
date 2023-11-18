@@ -10,3 +10,22 @@ patches:
     kind: Application
     name: vault
     namespace: vault
+- patch: |-
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: argocd
+      namespace: argocd
+    spec:
+      source:
+        path: "apps/argocd/overlays/prod"
+- path: add-monitoring-values.patch.yaml
+  target:
+    kind: Application
+    name: monitoring
+    namespace: monitoring
+- path: add-sd-helm-values.patch.yaml
+  target:
+    kind: Application
+    name: service-discovery
+    namespace: default
