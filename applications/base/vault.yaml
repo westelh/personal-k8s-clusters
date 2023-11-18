@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: vault
+spec:
+  project: default
+  source:
+    chart: vault
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision: ^0.27.0
+    helm:
+      releaseName: vault
+      valuesObject:
+        server:
+          ingress:
+            enabled: true
+            hosts:
+            - http:
+                paths:
+                - path: /
+                  pathType: Prefix
+                  backend:
+                    service:
+                      name: vault
+                      port:
+                        number: 8200
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd

@@ -1,0 +1,12 @@
+resources:
+- "../../base"
+
+buildMetadata: [managedByLabel, originAnnotations]
+
+patches:
+- path: add-vault-ingress-notation.patch.yaml
+- path: add-vault-ingress-host.patch.yaml
+  target:
+    kind: Application
+    name: vault
+    namespace: vault
