@@ -9,7 +9,6 @@ patches:
   target:
     kind: Application
     name: vault
-    namespace: vault
 - patch: |-
     apiVersion: argoproj.io/v1alpha1
     kind: Application
@@ -23,9 +22,7 @@ patches:
   target:
     kind: Application
     name: monitoring
-    namespace: monitoring
 - path: add-sd-helm-values.patch.yaml
   target:
     kind: Application
     name: service-discovery
-    namespace: default
