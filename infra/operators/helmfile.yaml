@@ -11,6 +11,8 @@ repositories:
   url: https://kubernetes.github.io/ingress-nginx
 - name: cert-manager
   url: https://charts.jetstack.io
+- name: hashicorp
+  url: https://helm.releases.hashicorp.com
 
 releases:
 - name: metallb
@@ -35,3 +37,11 @@ releases:
       extraArgs:
         enable-ssl-passthrough: "true"
   - {{ .Values.ingressNginx | toYaml | nindent 4 }}
+
+- name: vault-secrets-operator
+  namespace: vault-secrets-operator
+  chart: hashicorp/vault-secrets-operator
+  version: 0.4.0
+  values:
+  - {{ .Values.vaultSecretsOperator | toYaml | nindent 4 }}
+  

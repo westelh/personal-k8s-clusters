@@ -6,3 +6,5 @@ nfsSubdirExternalProvisioner: {}
 loadbalancer: {}
 
 ingressNginx: {}
+
+vaultSecretsOperator: {}
