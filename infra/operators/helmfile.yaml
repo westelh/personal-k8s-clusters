@@ -5,6 +5,9 @@ environments:
   kestrel:
     values:
     - ../environments/kestrel/values.yaml
+  bakke:
+    values:
+    - ../environments/bakke/values.yaml
 ---
 repositories:
 - name: ingress-nginx
