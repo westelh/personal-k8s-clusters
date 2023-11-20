@@ -8,9 +8,10 @@ https://developer.hashicorp.com/vault/docs/auth/kubernetes#configuration
 vault auth enable kubernetes
 ```
 
-### Configure Auth method
-
+### Configure Auth method from inside vault container
+```
 kubectl -n vault exec -it vault-0 -- /bin/sh
+```
 
 ```
 vault write auth/kubernetes/config \
@@ -42,7 +43,7 @@ Configure PKI Role,
 https://developer.hashicorp.com/vault/api-docs/secret/pki#create-update-role
 
 ```
-vault write /pki/roles/vault-issuer \
+vault write pki_int1/roles/vault-issuer \
       issuer_ref=default \
       max_ttl=720h \
       allow_any_name=true \
@@ -198,4 +199,98 @@ vault write pki/roles/consul-connect-injector \
     allow_localhost=true \
     max_ttl="720h"
 ```
+
+# PKI
+
+Enable PKI
+
+```
+vault enable pki
+```
+
+PKI can lease certificate for 10 years
+
+```
+vault secrets tune -max-lease-ttl=87600h pki
+```
+
+## Root
+
+Generate key and enable issuer
+
+```
+vault write pki/root/generate/internal \
+    common_name=vault.kestrel.westelh.dev \
+    ttl=87600h \
+    issuer_name=root
+```
+
+Set parameters
+
+default
+
+```
+vault write pki/config/issuers default="root"
+```
+
+crls
+
+```
+vault write pki/config/urls \
+    issuing_certificates="https://vault.kestrel.westelh.dev/v1/pki/ca" \
+    crl_distribution_points="https://vault.kestrel.westelh.dev/v1/pki/crl"
+```
+
+Configure roles
+
+```
+vault write pki/roles/intermediate \
+    allowed_domains=kestrel.westelh.dev \
+    allow_subdomains=true \
+    max_ttl=43800h
+```
+
+## Intermediate
+
+Enable it,
+
+```
+vault secrets enable -path=pki_int1 pki
+```
+
+Tune it,
+
+```
+vault secrets tune -max-lease-ttl=43800h pki
+```
+
+Generate intermediate key
+
+```
+vault write pki_int1/intermediate/generate/internal \
+	common_name="int1.vault.kestrel.westelh.dev" \
+	ttl=43800h -format=json | jq .data.csr -r > pki_int1.csr
+```
+
+Sign it with root
+
+```
+vault write pki/issuer/root/sign-intermediate csr=@pki_int1.csr format=pem_bundle ttl=43800 -format=json | jq -r ".data.certificate" > int.cert.pem
+```
+
+Set it as intermediate signing cert
+
+```
+vault write pki_int1/intermediate/set-signed certificate=@int.cert.pem
+```
+
+crls
+
+```
+vault write pki_int1/config/urls \
+    issuing_certificates="https://vault.kestrel.westelh.dev/v1/pki_int1/ca" \
+    crl_distribution_points="https://vault.kestrel.westelh.dev/v1/pki_int1/crl"
+```
+
+
 
