@@ -1,7 +1,7 @@
 environments:
-  default:
+  dev:
     values:
-    - ../environments/default/values.yaml
+    - ../environments/dev/values.yaml
   kestrel:
     values:
     - ../environments/kestrel/values.yaml
