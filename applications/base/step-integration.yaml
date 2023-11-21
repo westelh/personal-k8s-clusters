@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: step-integration 
+spec:
+  project: default
+  source:
+    chart: step-integration
+    repoURL: https://westelh.github.io/helm-charts
+    targetRevision: 1.0.2
+    helm: {}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default 
