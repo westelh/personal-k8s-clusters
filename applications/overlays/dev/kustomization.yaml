@@ -25,3 +25,8 @@ patches:
   target:
     kind: Application
     name: service-discovery
+
+- path: add-vault-integration-values-path.yaml
+  target:
+    kind: Application
+    name: vault-integration

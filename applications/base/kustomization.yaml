@@ -3,5 +3,5 @@ resources:
 - "vault.yaml"
 - "monitoring.yaml"
 - "service-discovery.yaml"
-
+- "vault-integration.yaml"
 namespace: argocd
