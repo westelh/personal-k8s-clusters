@@ -18,3 +18,4 @@ spec:
             annotations:
               cert-manager.io/issuer: step-issuer
               cert-manager.io/common-name: vault
+              cert-manager.io/issuer-kind: StepIssuer
