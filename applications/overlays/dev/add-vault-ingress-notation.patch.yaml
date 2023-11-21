@@ -15,5 +15,5 @@ spec:
               - 127.0.0.1
               secretName: vault-tls
             annotations:
-              cert-manager.io/cluster-issuer: step-issuer
+              cert-manager.io/issuer: step-issuer
               cert-manager.io/common-name: vault-dev
