@@ -1,3 +1,3 @@
-path "pki/sign/vault-issuer" {
+path "pki_int1/sign/westelh-dev" {
     capabilities = ["create", "update"]
 }
