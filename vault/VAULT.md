@@ -53,12 +53,12 @@ vault write pki_int1/roles/vault-issuer \
 Configure Role,
 
 ```
-vault write auth/kubernetes/role/vault-issuer \
+vault write auth/bakke/role/vault-issuer \
     bound_service_account_names=vault-issuer \
-    bound_service_account_namespaces=cert-manager \
+    bound_service_account_namespaces=default \
     audience="vault://vault-issuer" \
     policies=vault-issuer \
-    ttl=1m
+    ttl=30m
 ```
 
 Apply policy,
@@ -220,34 +220,17 @@ Generate key and enable issuer
 
 ```
 vault write pki/root/generate/internal \
-    common_name=vault.kestrel.westelh.dev \
+    common_name="Bakke Root CA" \
     ttl=87600h \
     issuer_name=root
 ```
 
-Set parameters
-
-default
-
-```
-vault write pki/config/issuers default="root"
-```
-
-crls
+Set parameters crls
 
 ```
 vault write pki/config/urls \
     issuing_certificates="https://vault.kestrel.westelh.dev/v1/pki/ca" \
     crl_distribution_points="https://vault.kestrel.westelh.dev/v1/pki/crl"
-```
-
-Configure roles
-
-```
-vault write pki/roles/intermediate \
-    allowed_domains=kestrel.westelh.dev \
-    allow_subdomains=true \
-    max_ttl=43800h
 ```
 
 ## Intermediate
@@ -261,14 +244,14 @@ vault secrets enable -path=pki_int1 pki
 Tune it,
 
 ```
-vault secrets tune -max-lease-ttl=43800h pki
+vault secrets tune -max-lease-ttl=43800h pki_int1
 ```
 
 Generate intermediate key
 
 ```
 vault write pki_int1/intermediate/generate/internal \
-	common_name="int1.vault.kestrel.westelh.dev" \
+	common_name="Bakke Intermediate 1" \
 	ttl=43800h -format=json | jq .data.csr -r > pki_int1.csr
 ```
 
