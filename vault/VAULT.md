@@ -10,7 +10,7 @@ vault auth enable kubernetes
 
 ### Configure Auth method from inside vault container
 ```
-kubectl -n vault exec -it vault-0 -- /bin/sh
+kubectl exec -it vault-0 -- /bin/sh
 ```
 
 ```
@@ -205,7 +205,7 @@ vault write pki/roles/consul-connect-injector \
 Enable PKI
 
 ```
-vault enable pki
+vault secrets enable pki
 ```
 
 PKI can lease certificate for 10 years
@@ -229,8 +229,8 @@ Set parameters crls
 
 ```
 vault write pki/config/urls \
-    issuing_certificates="https://vault.kestrel.westelh.dev/v1/pki/ca" \
-    crl_distribution_points="https://vault.kestrel.westelh.dev/v1/pki/crl"
+    issuing_certificates="https://vault.westelh.dev/v1/pki/ca" \
+    crl_distribution_points="https://vault.westelh.dev/v1/pki/crl"
 ```
 
 ## Intermediate
@@ -271,8 +271,8 @@ crls
 
 ```
 vault write pki_int1/config/urls \
-    issuing_certificates="https://vault.kestrel.westelh.dev/v1/pki_int1/ca" \
-    crl_distribution_points="https://vault.kestrel.westelh.dev/v1/pki_int1/crl"
+    issuing_certificates="https://vault.westelh.dev/v1/pki_int1/ca" \
+    crl_distribution_points="https://vault.westelh.dev/v1/pki_int1/crl"
 ```
 
 

@@ -26,4 +26,4 @@ spec:
                         number: 8200
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: vault
+    namespace: default
