@@ -5,6 +5,9 @@ environments:
   kestrel:
     values:
     - ../environments/kestrel/values.yaml
+  lark:
+    values:
+    - ../environments/bakke/values.yaml
 ---
 repositories:
 - name: nfs-subdir-external-provisioner

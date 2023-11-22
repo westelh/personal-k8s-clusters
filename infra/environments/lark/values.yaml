@@ -1,0 +1,10 @@
+baremetal:
+  enabled: false
+
+nfsSubdirExternalProvisioner: {}
+
+loadbalancer: {}
+
+ingressNginx: {}
+
+vaultSecretsOperator: {}

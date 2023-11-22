@@ -8,6 +8,9 @@ environments:
   bakke:
     values:
     - ../environments/bakke/values.yaml
+  lark:
+    values:
+    - ../environments/lark/values.yaml
 ---
 repositories:
 - name: ingress-nginx
@@ -28,13 +31,6 @@ releases:
   namespace: cert-manager
   version: ^1.13.0
   chart: cert-manager/cert-manager
-  values:
-  - installCRDs: true
-
-- name: trust-manager
-  namespace: cert-manager
-  version: 0.7.0
-  chart: cert-manager/trust-manager
   values:
   - installCRDs: true
 
