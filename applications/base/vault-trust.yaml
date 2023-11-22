@@ -7,18 +7,19 @@ spec:
   source:
     chart: vault-trust
     repoURL: https://westelh.github.io/helm-charts
-    targetRevision: 0.0.2
+    targetRevision: 0.0.6
     helm:
       valuesObject:
         vault:
           server:
             address: http://vault.default.svc:8200
-        auth:
-          kubernetes:
-            role: vault-trust
-            serviceAccount: vault-trust
-        
+          auth:
+            mount: bakke
+            kubernetes:
+              role: trust-manager
+              serviceAccount: trust-manager
+
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: default 
+    namespace: default
 
