@@ -7,7 +7,7 @@ spec:
   source:
     chart: step-integration
     repoURL: https://westelh.github.io/helm-charts
-    targetRevision: 1.0.3
+    targetRevision: 1.0.5
     helm: {}
   destination:
     server: "https://kubernetes.default.svc"
