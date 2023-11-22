@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: service-discovery
+  name: monitoring
 spec:
   project: default
   destination:
@@ -9,10 +9,12 @@ spec:
     namespace: default
   sources:
   - repoURL: https://github.com/westelh/personal-k8s-clusters.git
-    path: apps/service-discovery
+    path: apps/monitoring
     targetRevision: main
     helm:
-      releaseName: service-discovery
+      releaseName: monitoring
+      valueFiles:
+      - $values/apps/monitoring/values-prod.yaml
   - repoURL: https://github.com/westelh/personal-k8s-clusters.git
     targetRevision: main
     ref: values

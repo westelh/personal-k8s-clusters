@@ -14,8 +14,14 @@ spec:
         server:
           ingress:
             enabled: true
+            ingressClassName: nginx
+            tls:
+            - hosts:
+              - vault.westelh.dev
+              secretName: vault-tls
             hosts:
-            - http:
+            - host: vault.westelh.dev
+              http:
                 paths:
                 - path: /
                   pathType: Prefix
@@ -24,6 +30,11 @@ spec:
                       name: vault
                       port:
                         number: 8200
+            annotations:
+              cert-manager.io/issuer: lencr-issuer
+              cert-manager.io/issuer-kind: ClusterIssuer
+              cert-manager.io/common-name: vault.westelh.dev
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default

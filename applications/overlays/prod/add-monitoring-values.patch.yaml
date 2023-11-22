@@ -1,4 +1,0 @@
-- op: add
-  path: /spec/sources/0/helm/valueFiles
-  value:
-  - $values/apps/monitoring/values-prod.yaml
