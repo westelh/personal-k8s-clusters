@@ -15,7 +15,7 @@ spec:
   - argocd-server
   - argocd-server.argocd.svc
   issuerRef:
-    name: vault-issuer
+    name: lencr-issuer
     kind: ClusterIssuer
     group: cert-manager.io
 ---
@@ -36,7 +36,7 @@ spec:
   - argocd-repo-server
   - argocd-repo-server.argocd.svc
   issuerRef:
-    name: vault-issuer
+    name: lencr-issuer
     kind: ClusterIssuer
     group: cert-manager.io
 ---
@@ -57,6 +57,6 @@ spec:
   - argocd-dex-server
   - argocd-dex-server.argocd.svc
   issuerRef:
-    name: vault-issuer
+    name: lencr-issuer
     kind: ClusterIssuer
     group: cert-manager.io
