@@ -1,8 +1,6 @@
 resources:
 - "argocd.yaml"
 - "vault.yaml"
-- "monitoring.yaml"
-- "service-discovery.yaml"
 - "vault-integration.yaml"
 - "step-integration.yaml"
 - "letsencrypt.yaml"
