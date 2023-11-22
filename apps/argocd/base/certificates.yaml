@@ -5,11 +5,6 @@ metadata:
   namespace: argocd
 spec:
   secretName: argocd-server-tls
-  duration: 2160h0m0s # 90d
-  renewBefore: 360h0m0s # 15d
-  privateKey:
-    algorithm: ECDSA
-    size: 256
   commonName: argocd-server
   dnsNames:
   - argocd-server
@@ -26,11 +21,6 @@ metadata:
   namespace: argocd
 spec:
   secretName: argocd-repo-server-tls
-  duration: 2160h0m0s # 90d
-  renewBefore: 360h0m0s # 15d
-  privateKey:
-    algorithm: ECDSA
-    size: 256
   commonName: argocd-repo-server.argocd.svc
   dnsNames:
   - argocd-repo-server
@@ -47,11 +37,6 @@ metadata:
   namespace: argocd
 spec:
   secretName: argocd-dex-server-tls
-  duration: 2160h0m0s # 90d
-  renewBefore: 360h0m0s # 15d
-  privateKey:
-    algorithm: ECDSA
-    size: 256
   commonName: argocd-dex-server.argocd.svc
   dnsNames:
   - argocd-dex-server
