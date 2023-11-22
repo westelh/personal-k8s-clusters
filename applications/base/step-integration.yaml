@@ -8,7 +8,20 @@ spec:
     chart: step-integration
     repoURL: https://westelh.github.io/helm-charts
     targetRevision: 1.0.5
-    helm: {}
+    helm:
+      valuesObject:
+        hcp:
+          organizationId: 1b20107c-a816-46d1-89c9-63a6f6f645de
+          projectId: 95a1ad69-1608-42f8-81f9-2a4da2b0e5e3
+          principal:
+            secretRef: hcp-vault-secret
+        step:
+          authority:
+            url: https://devops.westelh.ca.smallstep.com
+            caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJoekNDQVM2Z0F3SUJBZ0lSQU5GSTZoRTlCa0l3K0NtaG5KOUttUWN3Q2dZSUtvWkl6ajBFQXdJd0lqRWcKTUI0R0ExVUVBeE1YVjJWemRHVnNhQ0JRY21sMllYUmxJRkp2YjNRZ1EwRXdIaGNOTWpNd01qRTVNREV3TnpReApXaGNOTXpNd01qRTJNREV3TnpReFdqQWlNU0F3SGdZRFZRUURFeGRYWlhOMFpXeG9JRkJ5YVhaaGRHVWdVbTl2CmRDQkRRVEJaTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEEwSUFCSWdGUVJLTUloTG5LZFBBdTNhRDlXMncKMXJza3hENzc4czFJbURnU295bUc3UFZFdERiM3RQOW5JMmplakNadDRZU0JKZUxIZWNnVjBzYWxBbk5Gc1EragpSVEJETUE0R0ExVWREd0VCL3dRRUF3SUJoakFTQmdOVkhSTUJBZjhFQ0RBR0FRSC9BZ0VCTUIwR0ExVWREZ1FXCkJCUmdTUE00THNQVUV3d3FTajJBZmpHVFZIaTVHakFLQmdncWhrak9QUVFEQWdOSEFEQkVBaUFqbmpxYnFSa2wKVHZKaW82dHFBTnRjR255Ny9uVGtYVFNvQit1eUd0R2hGZ0lnWE9sV3JhaDBJVTdGcy9jVmtrQTlvZEZKdHdFNgp4WllqdjcyUVpFZjVTL289Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+            provisioner:
+              name: step-issuer
+              kid: 9JcFam5JlXWpOV8HJPECvimtWVd8X7dCr2v8jXkgitU
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default 
