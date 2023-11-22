@@ -1,7 +1,7 @@
 resources:
 - "argocd.yaml"
 - "vault.yaml"
-- "vault-integration.yaml"
+- "vault-trust.yaml"
 - "step-integration.yaml"
 - "letsencrypt.yaml"
 
