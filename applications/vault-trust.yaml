@@ -14,7 +14,7 @@ spec:
           server:
             address: http://vault.default.svc:8200
           auth:
-            mount: bakke
+            mount: lark
             kubernetes:
               role: trust-manager
               serviceAccount: trust-manager

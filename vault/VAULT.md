@@ -5,7 +5,7 @@ https://developer.hashicorp.com/vault/docs/auth/kubernetes#configuration
 ### Enable
 
 ```
-vault auth enable kubernetes
+vault auth enable -path=lark kubernetes
 ```
 
 ### Configure Auth method from inside vault container
@@ -14,7 +14,7 @@ kubectl exec -it vault-0 -- /bin/sh
 ```
 
 ```
-vault write auth/kubernetes/config \
+vault write auth/lark/config \
     token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
     kubernetes_host=https://kubernetes.default.svc  \
     kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
@@ -220,7 +220,7 @@ Generate key and enable issuer
 
 ```
 vault write pki/root/generate/internal \
-    common_name="Bakke Root CA" \
+    common_name="Vault Root CA" \
     ttl=87600h \
     issuer_name=root
 ```
@@ -251,7 +251,7 @@ Generate intermediate key
 
 ```
 vault write pki_int1/intermediate/generate/internal \
-	common_name="Bakke Intermediate 1" \
+	common_name="Vault CA Intermediate 1" \
 	ttl=43800h -format=json | jq .data.csr -r > pki_int1.csr
 ```
 
