@@ -17,10 +17,10 @@ spec:
             ingressClassName: nginx
             tls:
             - hosts:
-              - vault.westelh.dev
+              - vault.lark.westelh.dev
               secretName: vault-tls
             hosts:
-            - host: vault.westelh.dev
+            - host: vault.lark.westelh.dev
               http:
                 paths:
                 - path: /
