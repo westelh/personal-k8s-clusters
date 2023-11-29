@@ -107,7 +107,7 @@ vault policy write consul-server vault/policies/consul-server.hcl
 ```
 
 ```
-vault write auth/kubernetes/role/consul-server \
+vault write auth/lark/role/consul-server \
     bound_service_account_names=consul-server \
     bound_service_account_namespaces=default \
     policies=consul-server \
@@ -125,7 +125,7 @@ vault policy write consul-client vault/policies/consul-client.hcl
 ```
 
 ```
-vault write auth/kubernetes/role/consul-client \
+vault write auth/lark/role/consul-client \
     bound_service_account_names=consul-client \
     bound_service_account_namespaces=default \
     policies=consul-client \
@@ -143,7 +143,7 @@ vault policy write consul-ca vault/policies/consul-ca.hcl
 ```
 
 ```
-vault write auth/kubernetes/role/consul-ca \
+vault write auth/lark/role/consul-ca \
     bound_service_account_names="*" \
     bound_service_account_namespaces=default \
     policies=consul-ca \
@@ -163,8 +163,8 @@ vault write pki/roles/consul-server \
 
 #### Prod
 ```
-vault write pki/roles/consul-server \
-    allowed_domains="kestrel.consul, consul-server, consul-server.default, consul-server.default.svc" \
+vault write pki_int1/roles/consul-server \
+    allowed_domains="lark.consul, consul-server, consul-server.default, consul-server.default.svc" \
     allow_subdomains=true \
     allow_bare_domains=true \
     allow_localhost=true \
@@ -192,7 +192,7 @@ vault write auth/kubernetes/role/consul-connect-injector \
 ```
 
 ```
-vault write pki/roles/consul-connect-injector \
+vault write pki_int1/roles/consul-connect-injector \
     allowed_domains="consul-connect-injector,consul-connect-injector.default,consul-connect-injector.default.svc,consul-connect-injector.default.svc.cluster.local" \
     allow_subdomains=true \
     allow_bare_domains=true \
