@@ -11,6 +11,9 @@ spec:
     helm:
       valueFiles:
       - "applications/consul-values.yaml"
+      valuesObject:
+        global:
+          datacenter: lark
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
