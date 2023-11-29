@@ -4,5 +4,6 @@ resources:
 - "vault-trust.yaml"
 - "step-integration.yaml"
 - "letsencrypt.yaml"
+- "monitoring.yaml"
 
 namespace: argocd
