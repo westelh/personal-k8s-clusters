@@ -6,10 +6,10 @@
     subPath: argocd-vault-plugin
 
 - op: add
-  path: /spec/template/spec/containers/0/envFrom/-
+  path: /spec/template/spec/containers/0/envFrom
   value:
-    secretRef:
-      name: argocd-vault-plugin-credentials
+    - secretRef:
+        name: argocd-vault-plugin
 
 - op: add
   path: /spec/template/spec/volumes/-
