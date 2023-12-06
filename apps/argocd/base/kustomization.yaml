@@ -6,4 +6,4 @@ resources:
 - certificates.yaml
 
 patches:
-  - path: argocd-server.yamlw
+  - path: argocd-server.yaml
