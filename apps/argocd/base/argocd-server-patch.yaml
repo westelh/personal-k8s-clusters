@@ -1,0 +1,37 @@
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts/-
+  value:
+    mountPath: /usr/local/bin/argocd-vault-plugin
+    name: custom-tools
+    subPath: argocd-vault-plugin
+
+- op: add
+  path: /spec/template/spec/containers/0/envFrom/-
+  value:
+    secretRef:
+      name: argocd-vault-plugin-credentials
+
+- op: add
+  path: /spec/template/spec/volumes/-
+  value:
+    name: custom-tools
+    emptyDir: {}
+
+- op: add
+  path: /spec/template/spec/initContainers/-
+  value:
+    name: download-tools
+    image: alpine:3.8
+    command:
+      - sh
+      - -c
+    env:
+      - name: AVP_VERSION
+        value: "1.16.1"
+    args:
+      - >-
+        wget -O argocd-vault-plugin
+
+- op: add
+  path: /spec/template/spec/autoMountServiceAccountToken
+  value: true

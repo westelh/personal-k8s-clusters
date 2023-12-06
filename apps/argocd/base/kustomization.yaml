@@ -6,4 +6,8 @@ resources:
 - certificates.yaml
 
 patches:
-  - path: argocd-server.yaml
+  - path: argocd-server-patch.yaml
+    target:
+      kind: Deployment
+      name: argocd-server
+  
