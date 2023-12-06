@@ -4,3 +4,6 @@ resources:
 - github.com/argoproj/argo-cd//manifests/ha/cluster-install?ref=v2.9.2
 - ingress.yaml
 - certificates.yaml
+
+patches:
+  - path: argocd-server.yamlw
