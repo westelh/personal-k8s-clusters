@@ -18,19 +18,19 @@
     emptyDir: {}
 
 - op: add
-  path: /spec/template/spec/initContainers/-
+  path: /spec/template/spec/initContainers
   value:
-    name: download-tools
-    image: alpine:3.8
-    command:
-      - sh
-      - -c
-    env:
-      - name: AVP_VERSION
-        value: "1.16.1"
-    args:
-      - >-
-        wget -O argocd-vault-plugin
+    - name: download-tools
+      image: alpine:3.8
+      command:
+        - sh
+        - -c
+      env:
+        - name: AVP_VERSION
+          value: "1.16.1"
+      args:
+        - >-
+          wget -O argocd-vault-plugin
 
 - op: add
   path: /spec/template/spec/autoMountServiceAccountToken
