@@ -9,7 +9,7 @@
   path: /spec/template/spec/containers/0/envFrom
   value:
   - secretRef:
-      name: argocd-vault-plugin
+      name: argocd-vault-plugin-credentials
 
 - op: add
   path: /spec/template/spec/volumes/-
