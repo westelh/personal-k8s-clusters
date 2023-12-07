@@ -18,3 +18,5 @@ ingressNginx:
         metallb.universe.tf/loadBalancerIPs: 172.20.100.1
 
 vaultSecretsOperator: {}
+
+grafanaOperator: {}

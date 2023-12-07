@@ -8,3 +8,5 @@ loadbalancer: {}
 ingressNginx: {}
 
 vaultSecretsOperator: {}
+
+grafanaOperator: {}
