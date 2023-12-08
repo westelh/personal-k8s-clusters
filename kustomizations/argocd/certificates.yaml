@@ -1,0 +1,44 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-dex-server-tls-cert
+spec:
+  commonName: argocd-dex-server.argocd.svc
+  dnsNames:
+  - argocd-dex-server
+  - argocd-dex-server.argocd.svc
+  issuerRef:
+    group: certmanager.step.sm
+    kind: StepClusterIssuer
+    name: step-issuer
+  secretName: argocd-dex-server-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-repo-server-tls-cert
+spec:
+  commonName: argocd-repo-server.argocd.svc
+  dnsNames:
+  - argocd-repo-server
+  - argocd-repo-server.argocd.svc
+  issuerRef:
+    group: certmanager.step.sm
+    kind: StepClusterIssuer
+    name: step-issuer
+  secretName: argocd-repo-server-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-server-tls-cert
+spec:
+  commonName: argocd-server
+  dnsNames:
+  - argocd.westelh.dev
+  issuerRef:
+    group: certmanager.step.sm
+    kind: StepClusterIssuer
+    name: step-issuer
+  secretName: argocd-server-tls

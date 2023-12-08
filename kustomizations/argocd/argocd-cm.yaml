@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  resource.exclusions: |
+    - apiGroups:
+      - cilium.io
+      kinds:
+      - CiliumIdentity
+      clusters:
+      - "*"
+
+  resource.customizations.ignoreDifferences.admissionregistration.k8s.io_MutatingWebhookConfiguration: |
+    jqPathExpressions:
+    - '.webhooks[]?.clientConfig.caBundle'
