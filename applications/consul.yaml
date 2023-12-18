@@ -22,7 +22,7 @@ spec:
                 address: http://vault.default.svc.cluster.local:8200
                 authMethodPath: kubernetes
                 rootPKIPath: pki
-                intermediatePKIPath: pki_int1
+                intermediatePKIPath: consul-ca
           gossipEncryption:
             secretName: kv/data/consul/gossip
             secretKey: key
