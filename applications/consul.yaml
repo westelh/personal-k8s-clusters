@@ -38,6 +38,7 @@ spec:
             caCert:
               secretName: consul-ca/issuer/default/json
         server:
+          replicas: 4
           serverCert:
             secretName: consul-ca/issue/consul-server
 
