@@ -18,7 +18,7 @@ spec:
               enabled: true
               consulServerRole: consul-server
               consulClientRole: consul-client
-              connectInjectRole: consul-connect-inject
+              connectInjectRole: consul-connect-injector
               consulCARole: consul-ca
               connectCA:
                 address: http://vault.default.svc.cluster.local:8200
