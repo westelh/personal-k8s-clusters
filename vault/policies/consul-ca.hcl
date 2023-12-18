@@ -1,3 +1,4 @@
-path "consul-ca/cert/ca" {
+# Consul CA
+path "consul-ca/issuer/default/json" {
     capabilities = ["read"]
 }
