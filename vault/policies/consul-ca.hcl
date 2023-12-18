@@ -1,3 +1,3 @@
-path "pki/cert/ca" {
+path "consul-ca/cert/ca" {
     capabilities = ["read"]
 }

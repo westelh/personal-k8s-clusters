@@ -25,16 +25,21 @@ spec:
                 authMethodPath: kubernetes
                 rootPKIPath: pki
                 intermediatePKIPath: consul-ca
+              connectInject:
+                tlsCert:
+                  secretName: consul-ca/issue/connectInject
+                caCert:
+                  secretName: consul-ca/cert/ca
           gossipEncryption:
             secretName: kv/data/consul/gossip
             secretKey: key
           tls:
             enabled: true
             caCert:
-              secretName: pki/cert/ca
+              secretName: consul-ca/cert/ca
         server:
           serverCert:
-            secretName: pki_int1/issue/consul-server
+            secretName: consul-ca/issue/consul-server
 
   destination:
     server: "https://kubernetes.default.svc"

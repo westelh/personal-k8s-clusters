@@ -2,10 +2,10 @@ path "kv/data/consul/gossip" {
     capabilities = [ "read" ]
 }
 
-path "pki/cert/ca" {
+path "consul-ca/cert/ca" {
     capabilities = ["read"]
 }
 
-path "pki/issue/consul-connect-injector" {
+path "consul-ca/issue/connectInjector" {
   capabilities = ["create", "update"]
 }
