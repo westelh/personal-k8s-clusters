@@ -11,6 +11,7 @@ spec:
     helm:
       valuesObject:
         global:
+          name: consul
           datacenter: lark
           secretsBackend:
             vault:
