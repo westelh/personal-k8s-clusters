@@ -18,6 +18,8 @@ spec:
               enabled: true
               consulServerRole: consul-server
               consulClientRole: consul-client
+              connectInjectRole: consul-connect-inject
+              consulCARole: consul-ca
               connectCA:
                 address: http://vault.default.svc.cluster.local:8200
                 authMethodPath: kubernetes
