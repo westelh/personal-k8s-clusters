@@ -20,7 +20,7 @@ spec:
               consulClientRole: consul-client
               connectCA:
                 address: http://vault.default.svc.cluster.local:8200
-                authMethodPath: lark
+                authMethodPath: kubernetes
                 rootPKIPath: pki
                 intermediatePKIPath: pki_int1
           gossipEncryption:
