@@ -12,6 +12,29 @@ spec:
       valuesObject:
         global:
           datacenter: lark
+          secretsBackend:
+            vault:
+              enabled: true
+              consulServerRole: consul-server
+              consulClientRole: consul-client
+              connectCA:
+                address: http://vault.default.svc.cluster.local:8200
+                authMethodPath: lark
+                rootPKIPath: pki
+                intermediatePKIPath: pki_int1
+          gossipEncryption:
+            secretName: kv/data/consul/gossip
+            secretKey: key
+          tls:
+            enabled: true
+            enableAutoEncrypt: true
+            caCert:
+              secretName: pki/cert/ca
+        server:
+          serverCert:
+            secretName: pki_int1/issuer/consul-server
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: consul
+
