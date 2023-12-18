@@ -6,6 +6,10 @@ path "consul-ca/cert/ca" {
     capabilities = ["read"]
 }
 
-path "consul-ca/issue/connectInjector" {
+path "consul-ca/issuer/default/json" {
+    capabilities = ["read"]
+}
+
+path "consul-ca/issue/connectInject" {
   capabilities = ["create", "update"]
 }

@@ -29,14 +29,14 @@ spec:
                 tlsCert:
                   secretName: consul-ca/issue/connectInject
                 caCert:
-                  secretName: consul-ca/cert/ca
+                  secretName: consul-ca/issuer/default/json
           gossipEncryption:
             secretName: kv/data/consul/gossip
             secretKey: key
           tls:
             enabled: true
             caCert:
-              secretName: consul-ca/cert/ca
+              secretName: consul-ca/issuer/default/json
         server:
           serverCert:
             secretName: consul-ca/issue/consul-server
