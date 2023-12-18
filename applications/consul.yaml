@@ -35,6 +35,7 @@ spec:
             secretKey: key
           tls:
             enabled: true
+            enableAutoEncrypt: true
             caCert:
               secretName: consul-ca/issuer/default/json
         server:
