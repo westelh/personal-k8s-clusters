@@ -32,7 +32,7 @@ spec:
               secretName: pki/cert/ca
         server:
           serverCert:
-            secretName: pki_int1/issuer/consul-server
+            secretName: pki_int1/issue/consul-server
 
   destination:
     server: "https://kubernetes.default.svc"
