@@ -28,7 +28,6 @@ spec:
             secretKey: key
           tls:
             enabled: true
-            enableAutoEncrypt: true
             caCert:
               secretName: pki/cert/ca
         server:
