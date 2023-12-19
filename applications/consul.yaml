@@ -42,6 +42,8 @@ spec:
           replicas: 4
           serverCert:
             secretName: consul-ca/issue/consul-server
+        syncCatalog:
+          enabled: true
 
   destination:
     server: "https://kubernetes.default.svc"
