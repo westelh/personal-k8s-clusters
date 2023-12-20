@@ -29,7 +29,7 @@ spec:
                 tlsCert:
                   secretName: consul-ca/issue/connectInject
                 caCert:
-                  secretName: consul-ca/issuer/default/json
+                  secretName: pki/cert/ca
           gossipEncryption:
             secretName: kv/data/consul/gossip
             secretKey: key
@@ -37,7 +37,7 @@ spec:
             enabled: true
             enableAutoEncrypt: true
             caCert:
-              secretName: consul-ca/issuer/default/json
+              secretName: pki/cert/ca
         server:
           replicas: 4
           serverCert:
