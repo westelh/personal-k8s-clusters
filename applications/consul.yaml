@@ -27,9 +27,9 @@ spec:
                 intermediatePKIPath: consul-ca
               connectInject:
                 tlsCert:
-                  secretName: consul-ca/issue/connectInject
+                  secretName: pki/issue/connectInjector
                 caCert:
-                  secretName: consul-ca/issuer/default
+                  secretName: pki/cert/ca
           gossipEncryption:
             secretName: kv/data/consul/gossip
             secretKey: key
@@ -37,11 +37,11 @@ spec:
             enabled: true
             enableAutoEncrypt: true
             caCert:
-              secretName: consul-ca/issuer/default
+              secretName: pki/cert/ca
         server:
           replicas: 4
           serverCert:
-            secretName: consul-ca/issue/consul-server
+            secretName: pki/issue/consul-server
         syncCatalog:
           enabled: true
 
