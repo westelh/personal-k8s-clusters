@@ -5,7 +5,7 @@ https://developer.hashicorp.com/vault/docs/auth/kubernetes#configuration
 ### Enable
 
 ```
-vault auth enable -path=lark kubernetes
+vault auth enable kubernetes
 ```
 
 ### Configure Auth method from inside vault container
