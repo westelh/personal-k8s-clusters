@@ -18,5 +18,4 @@ resource "vault_kubernetes_auth_backend_role" "argocd" {
   bound_service_account_namespaces = ["argocd"]
   token_ttl                        = 3600
   token_policies                   = [vault_policy.argocd.name]
-  audience                         = "vault"
 }
