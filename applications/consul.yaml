@@ -39,7 +39,7 @@ spec:
             caCert:
               secretName: pki/cert/ca
         server:
-          replicas: 4
+          replicas: 3
           serverCert:
             secretName: pki/issue/consul-server
         syncCatalog:
