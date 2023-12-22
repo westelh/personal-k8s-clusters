@@ -4,6 +4,11 @@ data "vault_policy_document" "consul_client" {
     capabilities = ["read"]
     description = "Consul client can read gossip key"
   }
+  rule {
+    path = "pki/cert/ca"
+    capabilities = ["read"]
+    description = "Consul client can read CA cert"
+  }
 }
 
 resource "vault_policy" "consul_client" {
