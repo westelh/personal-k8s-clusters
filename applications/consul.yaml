@@ -38,9 +38,6 @@ spec:
             enableAutoEncrypt: true
             caCert:
               secretName: pki/cert/ca
-          federation:
-            enabled: true
-            createFederationSecret: true
         server:
           replicas: 3
           serverCert:
