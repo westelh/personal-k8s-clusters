@@ -42,6 +42,8 @@ spec:
           replicas: 3
           serverCert:
             secretName: pki/issue/consul-server
+          exposeService:
+            enabled: true
         syncCatalog:
           enabled: true
         meshGateway:
