@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+spec:
+  project: default
+  source:
+    chart: grafana
+    repoURL: https://grafana.github.io/helm-charts
+    helm:
+      valuesObject:
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            cert-manager.io/cluster-issuer: lencr-issuer
+          hosts:
+            - grafana.westelh.dev
+          tls:
+            - secretName: grafana-tls
+              hosts:
+                - grafana.westelh.dev
+        persistence:
+          enabled: true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+
