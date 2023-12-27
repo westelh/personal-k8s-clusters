@@ -11,6 +11,9 @@ spec:
     helm:
       valuesObject:
         grafana:
+          persistence:
+            enabled: true
+            type: pvc
           ingress:
             enabled: true
             annotations:
