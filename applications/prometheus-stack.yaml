@@ -8,6 +8,20 @@ spec:
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 54.2.2
+    helm:
+      valuesObject:
+        grafana:
+          ingress:
+            enabled: true
+            annotations:
+              kubernetes.io/ingress.class: nginx
+              cert-manager.io/cluster-issuer: lencr-issuer
+            hosts:
+              - grafana.westelh.dev
+            tls:
+              - hosts:
+                  - grafana.westelh.dev
+                secretName: grafana-tls
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
