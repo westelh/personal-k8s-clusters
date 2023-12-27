@@ -9,7 +9,7 @@ spec:
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: 2.9.11
     helm:
-      valuesObject: []
+      valuesObject: {}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
