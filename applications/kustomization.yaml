@@ -6,5 +6,6 @@ resources:
 - "letsencrypt.yaml"
 - "prometheus-stack.yaml"
 - "consul.yaml"
+- "loki-stack.yaml"
 
 namespace: argocd
