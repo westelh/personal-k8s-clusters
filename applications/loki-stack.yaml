@@ -13,16 +13,17 @@ spec:
     helm:
       valuesObject:
         loki:
-          storage:
-            type: s3
-            s3:
-              endpoint: <endpoint>
-              secretAccessKey: <key>
-              accessKeyId: <id>
-            bucketNames:
-              chunks: <chunks>
-              ruler: <ruler>
-              admin: <admin>
+          loki:
+            storage:
+              type: s3
+              s3:
+                endpoint: <endpoint>
+                secretAccessKey: <key>
+                accessKeyId: <id>
+              bucketNames:
+                chunks: <chunks>
+                ruler: <ruler>
+                admin: <admin>
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
