@@ -16,12 +16,12 @@ spec:
           storage:
             type: s3
             s3:
-              endpoint: <endpoint>
               secretAccessKey: <key>
               accessKeyId: <id>
               region: ap-tokyo-1
               http_config:
                 insecure_skip_verify: true
+              s3forcepathstyle: true
             bucketNames:
               chunks: <chunks>
               ruler: <ruler>
