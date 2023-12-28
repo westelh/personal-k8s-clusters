@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: loki-stack 
   annotations:
-    avp.kubernetes.io/path: "kv/data/loki/s3"
+    avp.kubernetes.io/path: "kv/data/argocd/loki"
 spec:
   project: default
   source:
@@ -16,13 +16,13 @@ spec:
           storage:
             type: s3
             s3:
-              endpoint: nrenghdficwo.compat.objectstorage.ap-tokyo-1.oci.customer-oci.com
+              endpoint: <endpoint>
               secretAccessKey: <key>
               accessKeyId: <id>
             bucketNames:
-              chunks: lark-loki-chunks-8acffb9b89ee2a09
-              ruler: lark-loki-ruler-5384c69d576fd544
-              admin: lark-loki-admin-5c49dfca26dedf33
+              chunks: <chunks>
+              ruler: <ruler>
+              admin: <admin>
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
