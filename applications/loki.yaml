@@ -19,6 +19,7 @@ spec:
               endpoint: <endpoint>
               secretAccessKey: <key>
               accessKeyId: <id>
+              region: ap-tokyo-1
               http_config:
                 insecure_skip_verify: true
             bucketNames:
