@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+  annotations:
+    avp.kubernetes.io/path: "kv/data/argocd/loki"
+spec:
+  project: default
+  source:
+    chart: loki
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 5.41.4
+    helm:
+      valuesObject:
+        loki:
+          storage:
+            type: s3
+            s3:
+              endpoint: <endpoint>
+              secretAccessKey: <key>
+              accessKeyId: <id>
+            bucketNames:
+              chunks: <chunks>
+              ruler: <ruler>
+              admin: <admin>
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
