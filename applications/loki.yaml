@@ -19,6 +19,8 @@ spec:
               endpoint: <endpoint>
               secretAccessKey: <key>
               accessKeyId: <id>
+              http_config:
+                insecure_skip_verify: true
             bucketNames:
               chunks: <chunks>
               ruler: <ruler>
