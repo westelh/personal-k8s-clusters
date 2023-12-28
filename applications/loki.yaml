@@ -21,6 +21,7 @@ spec:
               region: ap-tokyo-1
               http_config:
                 insecure_skip_verify: true
+              endpoint: <endpoint>
             bucketNames:
               chunks: <chunks>
               ruler: <ruler>
