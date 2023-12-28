@@ -22,7 +22,7 @@ spec:
               http_config:
                 insecure_skip_verify: true
               endpoint: <endpoint>
-              s3forcepathstyle: true
+              s3forcepathstyle: false
             bucketNames:
               chunks: <chunks>
               ruler: <ruler>
