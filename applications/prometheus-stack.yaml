@@ -12,10 +12,9 @@ spec:
       valuesObject:
         prometheus:
           prometheusSpec:
-            serviceMonitorSelector:
-              matchLabels:
-                release: kube-prometheus-stack
-                monitoring: kube-prometheus-stack
+            # Select all service monitors
+            serviceMonitorSelectorNilUsesHelmValues: false
+            serviceMonitorSelector: {}
         grafana:
           persistence:
             enabled: true
