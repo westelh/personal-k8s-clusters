@@ -10,6 +10,12 @@ spec:
     targetRevision: 54.2.2
     helm:
       valuesObject:
+        prometheus:
+          prometheusSpec:
+            serviceMonitorSelector:
+              matchLabels:
+                release: kube-prometheus-stack
+                monitoring: kube-prometheus-stack
         grafana:
           persistence:
             enabled: true
