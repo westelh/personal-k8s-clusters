@@ -13,6 +13,7 @@ spec:
     kind: StepClusterIssuer
     name: step-issuer
   secretName: argocd-dex-server-tls
+  revisionHistoryLimit: 10
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -28,6 +29,7 @@ spec:
     kind: StepClusterIssuer
     name: step-issuer
   secretName: argocd-repo-server-tls
+  revisionHistoryLimit: 10
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -42,3 +44,4 @@ spec:
     kind: StepClusterIssuer
     name: step-issuer
   secretName: argocd-server-tls
+  revisionHistoryLimit: 10
