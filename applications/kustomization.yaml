@@ -5,7 +5,6 @@ resources:
 - "step-integration.yaml"
 - "letsencrypt.yaml"
 - "prometheus-stack.yaml"
-- "consul.yaml"
 - "loki.yaml"
 
 namespace: argocd
