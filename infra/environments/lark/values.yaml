@@ -5,7 +5,11 @@ nfsSubdirExternalProvisioner: {}
 
 loadbalancer: {}
 
-ingressNginx: {}
+ingressNginx:
+  controller:
+    service:
+      annotations:
+        oci.oraclecloud.com/load-balancer-type: "nlb"
 
 vaultSecretsOperator: {}
 
